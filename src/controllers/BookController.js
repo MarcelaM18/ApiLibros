@@ -26,9 +26,9 @@ async function getBookById(req, res) {
 
 // Crear un nuevo libro
 async function createBook(req, res) {
-  const { nombre, autor, ano, estado } = req.body;
+  const { nombre, autor, ano } = req.body;
   try {
-    const book = new Book({ nombre, autor, ano, estado });
+    const book = new Book({ nombre, autor, ano });
     await book.save();
     res.status(201).json(book);
   } catch (error) {
