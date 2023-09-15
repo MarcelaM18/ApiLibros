@@ -15,6 +15,7 @@ const bookSchema = new mongoose.Schema({
   },
   estado: {
     type: String,
+    efault: 'Activo',
     required: true,
   },
 });
