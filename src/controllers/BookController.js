@@ -26,9 +26,9 @@ async function getBookById(req, res) {
 
 // Crear un nuevo libro
 async function createBook(req, res) {
-  const { nombre, autor, año, estado } = req.body;
+  const { nombre, autor, ano, estado } = req.body;
   try {
-    const book = new Book({ nombre, autor, año, estado });
+    const book = new Book({ nombre, autor, ano, estado });
     await book.save();
     res.status(201).json(book);
   } catch (error) {
@@ -39,9 +39,9 @@ async function createBook(req, res) {
 // Actualizar un libro por ID
 async function updateBook(req, res) {
   const { id } = req.params;
-  const { nombre, autor, año, estado } = req.body;
+  const { nombre, autor, ano, estado } = req.body;
   try {
-    const book = await Book.findByIdAndUpdate(id, { nombre, autor, año, estado }, { new: true });
+    const book = await Book.findByIdAndUpdate(id, { nombre, autor, ano, estado }, { new: true });
     if (!book) {
       return res.status(404).json({ error: 'Libro no encontrado.' });
     }
