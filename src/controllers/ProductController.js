@@ -3,8 +3,8 @@ const Product = require('../models/Product');
 // Obtener todos los productos
 async function getAllProducts(req, res) {
   try {
-    const books = await Product.find();
-    res.json(books);
+    const products = await Product.find();
+    res.json(products);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los productos.' });
   }
@@ -26,9 +26,9 @@ async function getProductById(req, res) {
 
 // Crear un nuevo producto
 async function createProduct(req, res) {
-  const { nombre, autor, ano } = req.body;
+  const { nombre, precio } = req.body;
   try {
-    const product = new Product({ nombre, autor, ano });
+    const product = new Product({ nombre, precio });
     await product.save();
     res.status(201).json(product);
   } catch (error) {
@@ -39,9 +39,9 @@ async function createProduct(req, res) {
 // Actualizar un producto por ID
 async function updateProduct(req, res) {
   const { id } = req.params;
-  const { nombre, autor, ano, estado } = req.body;
+  const { nombre, precio, estado } = req.body;
   try {
-    const product = await Product.findByIdAndUpdate(id, { nombre, autor, ano, estado }, { new: true });
+    const product = await Product.findByIdAndUpdate(id, { nombre, precio, estado }, { new: true });
     if (!product) {
       return res.status(404).json({ error: 'Libro no encontrado.' });
     }
