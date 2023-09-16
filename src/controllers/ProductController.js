@@ -26,9 +26,9 @@ async function getProductById(req, res) {
 
 // Crear un nuevo producto
 async function createProduct(req, res) {
-  const { nombre, precio } = req.body;
+  const { nombre, precio, cantidad } = req.body;
   try {
-    const product = new Product({ nombre, precio });
+    const product = new Product({ nombre, precio, cantidad });
     await product.save();
     res.status(201).json(product);
   } catch (error) {
@@ -39,9 +39,9 @@ async function createProduct(req, res) {
 // Actualizar un producto por ID
 async function updateProduct(req, res) {
   const { id } = req.params;
-  const { nombre, precio, estado } = req.body;
+  const { nombre, precio, cantidad,estado } = req.body;
   try {
-    const product = await Product.findByIdAndUpdate(id, { nombre, precio, estado }, { new: true });
+    const product = await Product.findByIdAndUpdate(id, { nombre, precio,cantidad, estado }, { new: true });
     if (!product) {
       return res.status(404).json({ error: 'Libro no encontrado.' });
     }
