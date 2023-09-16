@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { DOUBLE } = require('sequelize');
+
 
 const productSchema = new mongoose.Schema({
   nombre: {
@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   precio: {
-    type: DOUBLE,
+    type: Number,
     required: true,
   },
   estado: {
